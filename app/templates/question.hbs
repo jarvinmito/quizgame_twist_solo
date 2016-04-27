@@ -1,0 +1,7 @@
+<div class="text-twist__question">
+	<span class="text-twist__count">{{data.round}} of {{data.maxround}}</span>
+	<p  class="text-twist__title">{{#if data.question}}{{#stripSlashes data.question}}{{/stripSlashes}}{{else}}Guess the Picture{{/if}}</p>
+	<div class="text-twist__img-wrap">
+	 	<img src="{{imagepath}}{{data.image}}" alt="{{data.question}}">
+	</div>
+</div>

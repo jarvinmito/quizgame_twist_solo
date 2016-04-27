@@ -1,0 +1,64 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0 10px;
+  &__player {
+    display: flex;
+    flex: 4;
+    margin-top: 15px;
+    overflow: hidden;
+    &:not(:first-child) {
+      justify-content: flex-end;
+      .player__avatar--small {
+        order: 2;
+      }
+      .player__details {
+        order: 1;
+        text-align: right;
+        .player__name {
+          text-align: right;
+        }
+      }
+    }
+    
+    .player {
+      &__details {
+        font-weight: 600;
+      }
+      &__name {
+        width: auto;
+        margin-bottom: 0;
+        line-height: 13px;
+        font-size: 10px;
+        text-align: left;
+//        word-break: break-all;
+      }
+      &__badge {
+        padding: 0;
+        font-size: 9px;
+        line-height: 13px;
+      }
+      &__score {
+        padding: 0;
+        font-size: 12px;
+        line-height: 14px;
+      }
+    }
+  }
+  &__points {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+  &__back-btn {
+    flex: 4;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    .game-button {
+      padding: 7px 10px;
+      font-size:12px; 
+    }
+  }
+}

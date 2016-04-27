@@ -1,0 +1,3 @@
+{{#each data}}
+	<li><a href="javascript:;" class="text-twist__item {{this.mode}}" {{#ifCond this.mode "buttons"}}data-sindex="{{this.sindex}}"{{/ifCond}} data-text="{{this.text}}">{{#ifCond this.text "_"}}{{else}}{{this.text}}{{/ifCond}}</a></li>
+{{/each}}

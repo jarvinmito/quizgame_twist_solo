@@ -1,0 +1,42 @@
+.opponent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding-top: 25px;
+  padding-bottom: 15px;
+  &__text,
+  &__level-points {
+    p {
+      margin: 0;
+      padding: 0;
+      font-size: 11px;
+    }
+  }
+  
+  &__text {
+    flex: 2;
+    p {
+      margin-right: 5px;
+      text-align: right;
+      color: $white;
+    }
+  }
+  &__level-points {
+    flex: 2;
+    p {
+      margin-left: 5px;
+      text-align: left;
+      color: $white;
+    }
+  }
+  &__avatar {
+    flex: 1;
+    text-align: center;
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+  }
+}

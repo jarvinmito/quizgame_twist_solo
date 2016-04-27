@@ -1,0 +1,294 @@
+.engage {
+  background-color: $bg-color;
+  //header player details
+  .header {
+    .player {
+      &__avatar {}
+      &__name {
+        color: $blue;
+      }
+      &__badge {
+        color: $blue;
+      }
+      &__score {
+        color: $orange;
+      }
+    }
+    .points {
+      &__title {
+        color: $blue;
+      }
+      &__value {
+        color: $orange;
+      }
+    }
+  }
+  //Ingame Question and Image
+  .ingame {
+    &__question {
+      color: $blue;
+    }
+    &__image {
+//      background-color: $blue;
+      color: $blue;
+    }
+  }
+  //Waiting Screen
+  .waiting-screen {
+    &__topic,
+    &__count{
+      color: $blue;
+    }
+
+    &__wrap {
+      color: $green;
+      &.is-warning {
+        color: $red;
+      }
+    }
+  }
+  //End Result Opponent Details
+  .opponent {
+    &__text,
+    &__level-points {
+      p {
+        color: $blue;
+      }
+    }
+  }
+  //pop up 
+  .pop-up {
+    &__header {}
+    &__close {
+      svg {
+        fill: $gray;
+      }
+    }
+    &__title {}
+    &__footer {}
+    &__button {
+      background-color: $blue-green;
+      color: $white;
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: darken($blue-green, 10%);
+        color: $white;
+      }
+      &.is-yellow {
+        background-color: $yellow;
+        color: $white;
+        &:hover,
+        &:focus,
+        &:active {
+          background-color: darken($yellow, 10%);
+          color: $white;
+        }
+      }
+    }
+  }
+  
+  //Result Page
+  .result-page {
+    &__share {
+      background: $orange;
+      svg {
+        fill: $bg-color;;
+      }
+    }
+    &--win {
+      .result-page__title {
+      color: $green;
+      }
+      .main-player__details {
+        background-color: $light-green;
+        &:before,
+        &:after {
+          content: "";
+          border-color: transparent darken($light-green, 20%) transparent;
+        }
+        .main-player__name  {
+          color: $black;
+        }
+        .main-player__score  {
+          color: $black;
+        }
+      }
+    }
+    &--lose {
+      .result-page__title {
+      color: $red;
+      }
+      .main-player__details {
+        background-color: $red-light;
+        &:before,
+        &:after {
+          content: "";
+          border-color: transparent darken($red, 20%) transparent;
+        }
+        .main-player__name  {
+          color: $white;
+        }
+        .main-player__score  {
+          color: $white;
+        }
+        
+      }
+    }
+    &--draw {
+      .result-page__title {
+      color: darken($orange, 5%);
+      }
+      .main-player__details {
+        background-color: $orange-light;
+        &:before,
+        &:after {
+          content: "";
+          border-color: transparent darken($orange-light, 30%) transparent;
+        }
+        .main-player__name  {
+          color: $dark;
+        }
+        .main-player__score  {
+          color: $dark;
+        }
+      }
+    }
+    &--solo {
+      .result-page__title {
+        color: $green;
+      }
+      .main-player__details {
+        background-color: $light-green;
+        &:before,
+        &:after {
+          content: "";
+          border-color: transparent darken($light-green, 20%) transparent;
+        }
+        .main-player__name  {
+          color: $black;
+        }
+        .main-player__score  {
+          color: $black;
+        }
+        .main-player__footer  {
+          color: $blue;
+        }
+      }
+    }
+  }
+  
+  //Versus Page 
+  .versus {
+    
+    &__vs {
+    background: $white;
+    color: $navy-blue2;
+    }
+    .player {
+      &--one {
+        background-color: $blue-green;
+        .player__details {
+          &:before {
+            content: " ";
+            border-top: 1px solid $white;
+          }
+        }
+        .player__name {
+          color: $white;
+        }
+        .player__badge {
+          background-color: $white;
+          color: $blue;
+          &:before {
+            content: " ";
+            background-color: $blue-green;
+          }
+          &:after {
+            content: " ";
+            background-color: $blue-green;
+          }
+        }
+        &.solo-game {
+          background-color: initial;
+          .player__badge {
+            &:after {
+              background-color: $yellow;
+            }
+          }
+        }
+      }
+      &--two {
+        background-color: $yellow;
+        .player__details {
+          &:before {
+            content: " ";
+            border-top: 1px solid $white;
+          }
+        }
+        .player__name {
+          color: $white;
+        }
+        .player__badge {
+          background-color: $white;
+          color: $blue;
+          &:before {
+            content: " ";
+            background-color: $yellow;
+          }
+          &:after {
+            content: " ";
+            background-color: $yellow;
+          }
+        }
+      }
+    }
+  }
+  
+  
+  
+  //Text Twist
+  .text-twist {
+
+    &__output {
+      .text-twist__item {
+        background-color: $white;
+        color: $dark;
+      }
+    }
+    &__input {
+      .text-twist__item {
+        background-color: $blue;
+        color: $white;
+      }
+    }
+    
+    &.is-wrong {
+      .text-twist__output {
+        .text-twist__item {
+          background-color: $red;
+          color: $white;
+        }
+      }
+    }
+    &.is-correct{
+      .text-twist__output {
+        .text-twist__item {
+          background-color: $light-green;
+          color: $green;
+        }
+      }
+    }
+
+    &.is-invalid{
+      .text-twist__output {
+        .text-twist__item {
+          background-color: $orange-light;
+          color: $orange;
+        }
+      }
+    }
+  }
+  
+  
+}

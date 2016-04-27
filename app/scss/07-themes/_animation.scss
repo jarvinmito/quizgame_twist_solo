@@ -1,0 +1,167 @@
+.engage {
+  &.animate-in {
+    @extend .animated,
+    .fadeIn;
+  }
+  &.animate-out {
+    @extend .animated,
+    .fadeOut;
+  }
+}
+
+//Versus Page
+.versus {
+  .solo-game.animate--in {
+    .player__avatar {
+      @extend .animated, .bounceIn;
+      animation-delay: 0.75s;
+    }
+    .player__details {
+      @extend .animated, .fadeIn;
+      animation-delay: 1s;
+
+    }
+  }
+
+  &__one {
+    &.animate {
+      &--in {
+        @extend .animated, .slideInDown;
+        .player__avatar {
+          @extend .animated, .bounceInLeft;
+          animation-delay: 0.5s;
+          
+        }
+        .player__details {
+          @extend .animated, .fadeIn;
+          animation-delay: 1s;
+          
+        }
+      }
+      &--out {
+        @extend .animated, .slideOutLeft;
+      }
+    }
+  }
+  &__two {
+    &.animate {
+      &--in {
+        @extend .animated,.slideInUp;
+        .player__avatar {
+          @extend .animated,.bounceInRight;
+          animation-delay: 0.5s;
+        }
+        .player__details {
+          @extend .animated,.fadeIn;
+          animation-delay: 1s;
+        }
+      }
+      &--out {
+        @extend .animated,.slideOutRight;
+      }
+    }
+  }
+  &__vs {
+    &.animate {
+      &--in {
+        @extend .animated,.zoomIn;
+      }
+      &--out {
+        @extend .animated,.zoomOut;
+      }
+    }
+  }
+}
+
+
+// Result Page
+.result-page {
+  
+  &--win,
+  &--solo{
+    &.animate {
+      &--in {
+        &::before {
+          @extend .animated, .bounceIn;
+        }
+        .result-page__title {
+          @extend .animated, .tada;
+          z-index: -1;
+        }
+      }
+    }
+  }
+  &--lose {
+    &.animate {
+      &--in {
+        &::before {
+          @extend .animated, .zoomIn;
+        }
+        .result-page__title {
+          @extend .animated, .pulse;
+          z-index: -1;
+        }
+      }
+    }
+  }
+  &--draw {
+    &.animate {
+      &--in {
+        &::before {
+          @extend .animated, .fadeIn;
+        }
+        .result-page__title {
+          @extend .animated, .bounce;
+          z-index: -1;
+        }
+      }
+    }
+  }
+}
+
+//Open-ended
+.open-ended {
+  &.is-correct::before {
+    @extend .animated, .tada;
+  }
+  &.is-wrong::before {
+    @extend .animated, .wobble;
+  }
+  &__answer {
+    @extend .animated, .fadeInUp;
+  }
+}
+
+//Ingame Option
+.ingame {
+  &__options {
+//    .game-button.is-correct {
+//      @extend .animated, .pulse;
+//    }
+    .answer-me,
+    .answer-opponent {
+      @extend .animated, .bounceIn;
+    }
+  }
+  
+}
+
+//Waiting Screen
+//.waiting-screen {
+//  @extend .animated, .fadeOut;
+//  animation-delay: 1.75s;
+//  &__holder {
+//    @extend .animated, .flipOutY;
+//    animation-delay: 1.25s;
+//  }
+//}
+
+//Pop up Achievements 
+.pop-up--achievement {
+  .pop-up__wrap.animate-in {
+    @extend .animated, .fadeInUp;
+  }
+  .pop-up__wrap.animate-out {
+    @extend .animated, .fadeOutUp;
+  }
+}

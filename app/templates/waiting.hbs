@@ -1,0 +1,10 @@
+<div class="waiting-screen">
+	<div class="waiting-screen__holder">
+	  <img class="waiting-screen__logo" src="{{#ifCond topic.icon ""}}assets/images/vanamo_logo.png{{else}}{{topic.icon}}{{/ifCond}}" alt="">
+	  <h3 class="waiting-screen__topic">{{topic.name}}</h3>
+	  <div class="waiting-screen__wrap">
+	  	<p>waiting for the player to accept the challenge</p>
+	  	<time class="waiting-screen__timer">{{>waiting-timer time=time}}</time>
+	  </div>
+  </div>
+</div>
