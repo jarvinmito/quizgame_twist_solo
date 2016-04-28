@@ -34,9 +34,9 @@ String.prototype.shuffle = function () {
 // App Core Functions
 
 var App = (function(){
-	var serverPath = "http://50.57.237.52";
-	var apiBasePath = serverPath+"/engage_dev/engage/api/texttsql";
-	var qimagePath = serverPath+"/engage_dev/engage_cms/mod/engage/images/question/"; // SERVER
+	var serverPath = config.serverPath;
+	var apiBasePath = config.serverPath+config.apiBasePath;
+	var qimagePath = config.serverPath+config.qimagePath;
 	// var qimagePath = serverPath+"/sites/elgg/mod/engage/images/question/"; // DON SERVER
 	// var qimagePath = "assets/images/questions/"; // LOCAL
 	// var apiBasePath = "../../engage/api/quizsql";
@@ -314,13 +314,39 @@ var App = (function(){
 				}
 			};
 
-			configMap.game = (match_json.data) ? match_json.data.game : (match_json.game) ? match_json.game : gameDefault;
-			configMap.topic = (match_json.data) ? match_json.data.topic : (match_json.topic) ? match_json.topic : topicDefault;
-			configMap.qs = (match_json.data) ? match_json.data.qs : (match_json.qs) ? match_json.qs : {};
-			configMap.ps = (match_json.data) ? { "players" : match_json.data.players } : (match_json.players) ? { "players" : match_json.players } : {};
-			
+			if( match_json.game ){
+				configMap.game = match_json.game;
+			}else{
+				configMap.game = gameDefault;
+			}
+
+			if( match_json.topic ){
+				configMap.topic = match_json.topic;
+			}else{
+				configMap.topic = topicDefault;
+			}
+
+			if( match_json.ps ){
+				configMap.ps = match_json.ps;
+			}else if( match_json.players ){
+				configMap.ps = { "players" : match_json.players };
+			}else{
+				configMap.ps = {};
+			}
+
+			if( match_json.qs ){
+				configMap.qs = match_json.qs;
+			}else{
+				configMap.qs = {};
+			}
+
+
 			if( match_json.data ){
+				configMap.game = match_json.data.game;
+				configMap.topic = match_json.data.topic;
 				configMap.match = match_json.data.match;
+				configMap.qs = match_json.data.qs;
+				configMap.ps = { "players" : match_json.data.players };
 			}else if( match_json.match ){
 				configMap.match = match_json.match;
 			}else{
@@ -355,6 +381,7 @@ var App = (function(){
 		configMap.player.id = localStorage[configMap.plstore.id];
 		configMap.player.score = 0;
 		configMap.player.place = 'a'; // For solo play
+		configMap.ps.players.a.score = 0;
 
 		configMap.isRequested['challengePlayer'] = false;
 		configMap.isRequested['acceptChallenge'] = false;
@@ -377,8 +404,8 @@ var App = (function(){
 		console.log(' Current config map ',configMap);
 
 		var reqData = {
-			qt_id : 6,
-			topic_id : 1,
+			qt_id : configMap.game.id,
+			topic_id : configMap.topic.id,
 			qnum : 10,
 			q_status : 'solo'
 		};
@@ -1011,6 +1038,8 @@ var App = (function(){
 		// }
 		var status = 'Yehey!';
 		var result = 'win';
+
+		configMap.player.icon = configMap.ps.players.a.photo_url;
 
 		var playerdata = { me : configMap.player, status : status, result : result };
 		var engage = jqueryMap.$main;
@@ -1847,6 +1876,7 @@ var App = (function(){
 		configMap.currentScreen = 'versus';
 
 		// var players = configMap.ps.players;
+		configMap.ps.players.a.icon = configMap.ps.players.a.photo_url;
 		var player = configMap.ps.players.a;//name;
 
 		// var player_a = configMap.match.isactive.a;
@@ -2617,7 +2647,9 @@ var App = (function(){
 		configMap.modal.isActive = true;
 		console.log(t,m);
 
-		renderModal();
+		if( t !== 'abort' ){
+			renderModal();
+		}
 	};
 
 	var roundCaller = function(round){
@@ -2636,11 +2668,11 @@ var App = (function(){
 		// initialization code for app here
 		console.log('It\'s alive!!!');
 		console.log('INITMODULE()');
-
+		var t;
 		var init = function(){
 			console.log('interval running....');
 
-			if( localStorage[configMap.plstore.match] ){
+			if( localStorage[configMap.plstore.match].length ){
 
 				// For debugging
 				// configMap.isStatic = true;
@@ -2650,11 +2682,17 @@ var App = (function(){
 				// Start
 				renderVS();
 
-				clearInterval(t);
+				clearTimeout(t);
+			}else{
+				initTimer();
 			}
 		};
 
-		var t = setInterval(init, 1000);
+		var initTimer = function(){
+			t = setTimeout(init, 2000);
+		}
+
+		initTimer();
 		
 	};
 

@@ -55,7 +55,7 @@ this["App"]["Templates"]["header-points"] = Handlebars.template({"compiler":[7,"
 
   return "<p class=\"points__value\">"
     + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.game : depth0)) != null ? stack1.points : stack1), depth0))
-    + "</p>\r\n<p class=\"points__title\">Points</p>";
+    + "</p>\r\n<p class=\"points__title\">Timer</p>";
 },"useData":true});
 
 this["App"]["Templates"]["header"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
